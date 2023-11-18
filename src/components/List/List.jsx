@@ -18,16 +18,11 @@ import {
 
 import Placedetails from "../Placedetails/Placedetails";
 
-const List = () => {
+const List = ({ places, childClicked }) => {
   const [type, setType] = useState("");
   const [rating, setRating] = useState("");
+  console.log({ childClicked });
 
-  const places = [
-    { name: "good place" },
-    { name: "good place" },
-    { name: "good place" },
-    { name: "good place" },
-  ];
   return (
     <StyledContainer>
       <Typography variant="h5">
@@ -62,7 +57,7 @@ const List = () => {
         </Select>
       </StyledFormControl>
       <StyledList container spacing={3}>
-        {places.map((place, i) => (
+        {places?.map((place, i) => (
           <Grid item key={i} xs={12}>
             <Placedetails place={place} />
           </Grid>

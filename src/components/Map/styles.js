@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 
-export const StyledPaper = styled("div")(({ theme }) => ({
+export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "10px",
   display: "flex",
   flexDirection: "column",
@@ -20,6 +21,9 @@ export const StyledMarkerContainer = styled("div")(({ theme }) => ({
   "&:hover": { zIndex: 2 },
 }));
 
+export const StyledImage = styled("img")({
+  cursor: "pointer",
+});
 export const StyledPointer = styled("div")(({ theme }) => ({
   cursor: "pointer",
 }));
