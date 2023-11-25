@@ -17,7 +17,7 @@ import {
 } from "./styles";
 
 import Placedetails from "../Placedetails/Placedetails";
-
+// cehcking check in
 const List = ({ places, childClickedtoList }) => {
   const [type, setType] = useState("");
   const [rating, setRating] = useState("");
