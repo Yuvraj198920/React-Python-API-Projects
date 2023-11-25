@@ -14,7 +14,7 @@ import { getPlacesData } from "./api";
 const App = () => {
   const [placeData, setPlaceData] = useState([]);
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

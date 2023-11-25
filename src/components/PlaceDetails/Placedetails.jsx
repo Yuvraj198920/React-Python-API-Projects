@@ -13,6 +13,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import { StyledChip, StyledSubtitle } from "./styles";
 
 const PlaceDetails = ({ place }) => {
   return (
@@ -48,14 +49,36 @@ const PlaceDetails = ({ place }) => {
             {place.ranking}
           </Typography>
         </Box>
-        <Box display="flex" justifyContent="space-between" my={1}>
-          <Typography variant="body2" color="text.secondary">
-            Cuisine
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {place?.cuisine?.map((c) => c.name).join(",")}
-          </Typography>
-        </Box>
+
+        {place?.address && (
+          <StyledSubtitle
+            gutterBottom
+            variant="subtitle2"
+            color="text-secondary"
+          >
+            <LocationOnIcon />{" "}
+            <Typography variant="body2" color="text.secondary">
+              {place.address}
+            </Typography>
+          </StyledSubtitle>
+        )}
+
+        {place?.phone && (
+          <StyledSubtitle
+            gutterBottom
+            variant="subtitle2"
+            color="text-secondary"
+          >
+            <LocalPhoneIcon />
+            <Typography variant="body2" color="text-secondary">
+              {place.phone}
+            </Typography>
+          </StyledSubtitle>
+        )}
+
+        {place?.cuisine?.map(({ name }) => (
+          <StyledChip key={name} size="small" label={name}></StyledChip>
+        ))}
       </CardContent>
     </Card>
   );
