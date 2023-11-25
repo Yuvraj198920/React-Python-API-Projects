@@ -13,29 +13,34 @@ import {
   Item,
   MarkerContainer,
 } from "./styles";
+import { useMediaQuery } from "@mui/material";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const Map = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 11,
-  };
+const Map = ({ setCoordinates, coordinates, setBounds }) => {
+  const isMobile = useMediaQuery("(min-width:600px)");
+
   return (
     <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyAOIh4ogTJegKVs5J6m_V0ZSypMFJnSBAw" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
+        defaultCenter={coordinates}
+        center={coordinates}
+        defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={""}
-        onChange={""}
+        onChange={(e) => {
+          console.log(e);
+          setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+        }}
         onChildClick={""}
       >
-        <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
+        <AnyReactComponent
+          lat={coordinates.lat}
+          lng={coordinates.lng}
+          text="My Marker"
+        />
       </GoogleMapReact>
     </MapContainer>
   );

@@ -7,13 +7,17 @@ import {
   MenuItem,
   FormControl,
   Select,
+  Card,
 } from "@mui/material";
 
 import { StyledFormControl, StyledSelect, StyledContainer } from "./styles";
+import PlaceDetails from "../PlaceDetails/Placedetails";
 
-const List = () => {
+const List = ({ places }) => {
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
+
+  // const places = [{ name: "Place 1" }, { name: "Place 2" }];
   return (
     <StyledContainer>
       <Typography variant="h4">
@@ -48,6 +52,14 @@ const List = () => {
           <MenuItem value={5}>Above 4.5</MenuItem>
         </Select>
       </StyledFormControl>
+
+      <Grid spacing={3} style={{ height: "75vh", overflow: "auto" }}>
+        {places?.map((p, i) => (
+          <Grid item key={i} xs={12}>
+            <PlaceDetails place={p} />
+          </Grid>
+        ))}
+      </Grid>
     </StyledContainer>
   );
 };

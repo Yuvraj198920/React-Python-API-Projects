@@ -1,7 +1,8 @@
 import React from "react";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 
-const PlaceDetails = () => {
-  return <h2>Place details component</h2>;
+const PlaceDetails = ({ place }) => {
+  return <h2>{place.name}</h2>;
 };
 
 export default PlaceDetails;
