@@ -14,7 +14,7 @@ import { StyledFormControl, StyledSelect, StyledContainer } from "./styles";
 import PlaceDetails from "../PlaceDetails/Placedetails";
 
 const List = ({ places }) => {
-  const [type, setType] = useState("restaurants");
+  const [type, setType] = useState("");
   const [rating, setRating] = useState("");
 
   // const places = [{ name: "Place 1" }, { name: "Place 2" }];
