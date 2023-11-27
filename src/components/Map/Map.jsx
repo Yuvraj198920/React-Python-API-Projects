@@ -25,9 +25,6 @@ const Map = ({
   setChildClick,
 }) => {
   const isDesktop = useMediaQuery("(min-width:600px)");
-  if (places) {
-    places = places.filter((place) => "name" in place);
-  }
 
   return (
     <MapContainer>

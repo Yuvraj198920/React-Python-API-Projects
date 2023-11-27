@@ -22,3 +22,10 @@ export const StyledSelect = styled(Select)(({ theme }) => ({
 export const StyledContainer = styled("div")(({ theme }) => ({
   padding: "25px",
 }));
+
+export const StyledLoading = styled("div")(({ theme }) => ({
+  height: "600px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}));
