@@ -10,15 +10,18 @@ import Rating from "@mui/material/Rating";
 import {
   MapContainer,
   PointerContainer,
-  Item,
+  StyledPaper,
   MarkerContainer,
 } from "./styles";
 import { useMediaQuery } from "@mui/material";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const Map = ({ setCoordinates, coordinates, setBounds }) => {
-  const isMobile = useMediaQuery("(min-width:600px)");
+const Map = ({ setCoordinates, coordinates, setBounds, places }) => {
+  const isDesktop = useMediaQuery("(min-width:600px)");
+  if (places) {
+    places = places.filter((place) => "name" in place);
+  }
 
   return (
     <MapContainer>
@@ -34,13 +37,34 @@ const Map = ({ setCoordinates, coordinates, setBounds }) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={""}
+        onChildClick={(child) => {}}
       >
-        <AnyReactComponent
-          lat={coordinates.lat}
-          lng={coordinates.lng}
-          text="My Marker"
-        />
+        {places?.map((place, i) => (
+          <MarkerContainer
+            lat={Number(place.latitude)}
+            lng={Number(place.longitude)}
+            key={i}
+          >
+            {!isDesktop ? (
+              <PlaceOutlinedIcon color="primary" fontSize="large" />
+            ) : (
+              <StyledPaper elevation={3}>
+                <Typography variant="subtitle2" gutterBottom>
+                  {place.name}
+                </Typography>
+                <img
+                  style={{ cursor: "pointer" }}
+                  src={
+                    place.photo
+                      ? place.photo.images.large.url
+                      : "https://fastly.picsum.photos/id/23/3887/4899.jpg?hmac=2fo1Y0AgEkeL2juaEBqKPbnEKm_5Mp0M2nuaVERE6eE"
+                  }
+                  alt={place.name}
+                />
+              </StyledPaper>
+            )}
+          </MarkerContainer>
+        ))}
       </GoogleMapReact>
     </MapContainer>
   );

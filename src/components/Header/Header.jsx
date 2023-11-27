@@ -28,7 +28,7 @@ const Header = () => {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            Explore new Places
+            Search Location
           </Typography>
           {/* <Autocomplete> */}
           <Search>
@@ -41,8 +41,6 @@ const Header = () => {
             />
           </Search>
           {/* </Autocomplete> */}
-
-          {/* <Autocomplete></Autocomplete> */}
         </Toolbar>
       </AppBar>
     </Box>

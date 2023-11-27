@@ -44,6 +44,7 @@ const App = () => {
             setCoordinates={setCoordinates}
             coordinates={coordinates}
             setBounds={setBounds}
+            places={placeData}
           />
         </Grid>
       </Grid>
