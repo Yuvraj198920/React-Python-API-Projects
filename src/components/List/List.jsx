@@ -13,10 +13,10 @@ import {
 import { StyledFormControl, StyledSelect, StyledContainer } from "./styles";
 import PlaceDetails from "../PlaceDetails/Placedetails";
 
-const List = ({ places }) => {
+const List = ({ places, childClicked }) => {
   const [type, setType] = useState("");
   const [rating, setRating] = useState("");
-
+  console.log({ childClicked });
   // const places = [{ name: "Place 1" }, { name: "Place 2" }];
   return (
     <StyledContainer>

@@ -17,7 +17,13 @@ import { useMediaQuery } from "@mui/material";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const Map = ({ setCoordinates, coordinates, setBounds, places }) => {
+const Map = ({
+  setCoordinates,
+  coordinates,
+  setBounds,
+  places,
+  setChildClick,
+}) => {
   const isDesktop = useMediaQuery("(min-width:600px)");
   if (places) {
     places = places.filter((place) => "name" in place);
@@ -37,7 +43,7 @@ const Map = ({ setCoordinates, coordinates, setBounds, places }) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => {}}
+        onChildClick={(child) => setChildClick(child)}
       >
         {places?.map((place, i) => (
           <MarkerContainer
@@ -61,6 +67,11 @@ const Map = ({ setCoordinates, coordinates, setBounds, places }) => {
                   }
                   alt={place.name}
                 />
+                <Rating
+                  size="small"
+                  value={Number(place.rating)}
+                  readOnly
+                ></Rating>
               </StyledPaper>
             )}
           </MarkerContainer>
