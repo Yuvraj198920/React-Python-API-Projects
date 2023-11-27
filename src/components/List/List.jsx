@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import {
   InputLabel,
   Typography,
@@ -16,8 +16,15 @@ import PlaceDetails from "../PlaceDetails/Placedetails";
 const List = ({ places, childClicked }) => {
   const [type, setType] = useState("");
   const [rating, setRating] = useState("");
+  const [elRefs, setElRefs] = useState([]);
   console.log({ childClicked });
-  // const places = [{ name: "Place 1" }, { name: "Place 2" }];
+
+  useEffect(() => {
+    const refs = Array(places.length)
+      .fill()
+      .map((_, i) => elRefs[i] || createRef());
+    setElRefs(refs);
+  }, [places]);
   return (
     <StyledContainer>
       <Typography variant="h4">
@@ -55,8 +62,12 @@ const List = ({ places, childClicked }) => {
 
       <Grid spacing={3} style={{ height: "75vh", overflow: "auto" }}>
         {places?.map((p, i) => (
-          <Grid item key={i} xs={12}>
-            <PlaceDetails place={p} />
+          <Grid ref={elRefs[i]} item key={i} xs={12}>
+            <PlaceDetails
+              place={p}
+              selected={Number(childClicked === i)}
+              refProp={elRefs[i]}
+            />
           </Grid>
         ))}
       </Grid>
