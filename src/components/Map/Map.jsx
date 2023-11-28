@@ -15,8 +15,6 @@ import {
 } from "./styles";
 import { useMediaQuery } from "@mui/material";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 const Map = ({
   setCoordinates,
   coordinates,
