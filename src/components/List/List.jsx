@@ -21,7 +21,7 @@ const List = ({
   setRating,
 }) => {
   const [elRefs, setElRefs] = useState([]);
-  console.log({ childClicked });
+  // console.log({ childClicked });
 
   useEffect(() => {
     setElRefs((refs) =>

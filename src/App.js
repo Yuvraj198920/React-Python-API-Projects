@@ -22,6 +22,12 @@ const App = () => {
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
 
+  const [filterPlaces, setFilterPlaces] = useState([]);
+
+  useEffect(() => {
+    setFilterPlaces(placeData?.filter((place) => place.rating > rating));
+  }, [rating]);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
@@ -36,6 +42,7 @@ const App = () => {
     getPlacesData(type, bounds?.sw, bounds?.ne).then((data) => {
       data = data?.filter((place) => "name" in place);
       setPlaceData(data);
+      setFilterPlaces([]);
       setLoading(false);
     });
   }, [type, coordinates, bounds]);
@@ -46,7 +53,7 @@ const App = () => {
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item sx={12} md={4}>
           <List
-            places={placeData}
+            places={filterPlaces.length ? filterPlaces : placeData}
             childClicked={child}
             isLoading={isLoading}
             type={type}
@@ -60,7 +67,7 @@ const App = () => {
             setCoordinates={setCoordinates}
             coordinates={coordinates}
             setBounds={setBounds}
-            places={placeData}
+            places={filterPlaces.length ? filterPlaces : placeData}
             setChildClick={setChildClick}
           />
         </Grid>
