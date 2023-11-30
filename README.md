@@ -1,3 +1,15 @@
+# To enable Google-map-react Autocomplete
+
+1. import useLoadScript inside Header component
+   import { Autocomplete, useLoadScript } from "@react-google-maps/api";
+2. Declare a variable to hold the places library
+   const placeLibrary = ["places"];
+3. Create variable to store google map api loading state
+   const { isLoaded } = useLoadScript({
+   googleMapsApiKey: "AIzaSyAOIh4ogTJegKVs5J6m_V0ZSypMFJnSBAw",
+   libraries: placeLibrary,
+   });
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

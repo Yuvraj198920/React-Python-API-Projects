@@ -1,18 +1,10 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import Rating from "@mui/material/Rating";
 
-import {
-  MapContainer,
-  PointerContainer,
-  StyledPaper,
-  MarkerContainer,
-} from "./styles";
+import { MapContainer, StyledPaper, MarkerContainer } from "./styles";
 import { useMediaQuery } from "@mui/material";
 
 const Map = ({
