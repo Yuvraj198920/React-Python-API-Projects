@@ -1,5 +1,9 @@
 # To enable Google-map-react Autocomplete
 
+
+https://github.com/Yuvraj198920/React-Python-API-Projects/assets/19321300/c7b89ece-6b9a-4f40-8de9-8dcfc2542416
+
+
 1. import useLoadScript inside Header component
    import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 2. Declare a variable to hold the places library
